@@ -35,16 +35,34 @@ export class LandingHomeComponent implements AfterContentInit
    
 
     template={
-      "name": 'React Sample component',
-      "description":'react sample component',
-      "version": 'v1.0'
-    };
+  "name" : "Math S-Training",
+  "description" : "math training is to basis problem on add, sub, multiply, divid of integer, decimal, franction and mixed. ",
+  "version" : "1.0"
+};
   
     reactiveComponent={
-
-      
-
-    };
+  "component" : {
+    "componentTemplateId" : "67aebb903ec1e310a126d069",
+    "templateDeployId" : null,
+    "content" : {
+      "title" : "3rd Grade Training",
+      "numTypes" : "Integer",
+      "opTypes" : "Add",
+      "maxProblems" : 40,
+      "Integer range" : "10,100",
+      "fractionNumberRange" : "1,20"
+    },
+    "ui" : { },
+    "scores" : [ ]
+  },
+  "runtime" : {
+    "data" : {
+      "index" : null,
+      "problems" : null,
+      "corrections" : null
+    }
+  }
+};
 
 
 
@@ -57,8 +75,8 @@ export class LandingHomeComponent implements AfterContentInit
    
     async StartTest(){
       
-        const componentModule = await import('../component/Component3121f9dfc5bb427ca055e6521008c7f95129a609d19b4df48659566e00894fa5.component');
-        const TemplateComponent = componentModule['Component3121f9dfc5bb427ca055e6521008c7f95129a609d19b4df48659566e00894fa5'];
+        const componentModule = await import('../component/Componentb07967ec20154397ad750642f9d8ea30.component');
+        const TemplateComponent = componentModule['Componentb07967ec20154397ad750642f9d8ea30'];
 
         this.testContainer.clear();
 
