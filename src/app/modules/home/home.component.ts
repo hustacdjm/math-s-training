@@ -35,9 +35,9 @@ export class LandingHomeComponent implements AfterContentInit
    
 
     template={
-  "name" : "Math S-Training",
-  "description" : "math training is to basis problem on add, sub, multiply, divid of integer, decimal, franction and mixed. ",
-  "version" : "1.0"
+  "name" : null,
+  "description" : null,
+  "version" : "2.0"
 };
   
 reactiveComponent = {
@@ -79,8 +79,8 @@ reactiveComponent = {
    
     async StartTest(){
       
-        const componentModule = await import('../component/Componentb07967ec20154397ad750642f9d8ea30.component');
-        const TemplateComponent = componentModule['Componentb07967ec20154397ad750642f9d8ea30'];
+        const componentModule = await import('../component/Component67b02f183ec1e310a126d06a2926be961170411f9296a6eac0ddd7f1.component');
+        const TemplateComponent = componentModule['Component67b02f183ec1e310a126d06a2926be961170411f9296a6eac0ddd7f1'];
 
         this.testContainer.clear();
 

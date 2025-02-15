@@ -16,16 +16,16 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
-    selector     : 'Componentb07967ec20154397ad750642f9d8ea30',
+    selector     : 'Component67b02f183ec1e310a126d06a2926be961170411f9296a6eac0ddd7f1',
     standalone   : true,
-    templateUrl  : './Componentb07967ec20154397ad750642f9d8ea30.component.html',
+    templateUrl  : './Component67b02f183ec1e310a126d06a2926be961170411f9296a6eac0ddd7f1.component.html',
     encapsulation: ViewEncapsulation.None,
     imports:[
        CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule,MatRadioModule, MatButtonModule
     ]
     
 })
-export class Componentb07967ec20154397ad750642f9d8ea30 implements OnInit
+export class Component67b02f183ec1e310a126d06a2926be961170411f9296a6eac0ddd7f1 implements OnInit
 {
 
     @Input() data:any;
