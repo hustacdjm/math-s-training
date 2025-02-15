@@ -4,8 +4,82 @@
 
         <div class="mt-4">
            
-            Test for the selector without change other infos.
-           
+            <div class="text-3xl font-bold">{{data.component.content.title}}</div>
+
+            <div  *ngIf="!status" class="mt-4 text-2xl text-extrabold" [innerHTML]=" this.sanitizer.bypassSecurityTrustHtml(data.component.content.description)"></div>
+
+            <button *ngIf="!status"
+            class="mt-2"
+            mat-flat-button
+            (click)="startTraining()"
+            [color]="'primary'">
+                Start
+            </button>
+
+            <ng-container *ngIf="status=='intraining'">
+
+                <div class="mt-4">#{{index}}/{{total}}</div>
+
+                <div class="mt-4 text-5xl text-extrabold" [innerHTML]=" this.sanitizer.bypassSecurityTrustHtml(equationMathML)"></div>
+
+                <div class="mt-4 w-full">
+                    <mat-form-field
+                        class="w-full"
+                        [subscriptSizing]="'dynamic'">
+                        <mat-label>Answer:</mat-label>                       
+                        <input
+                            matInput
+                            [(ngModel)]="answer"
+                            [ngModelOptions]="{standalone: true}"                            
+                            [placeholder]=""
+                            [spellcheck]="false">
+                    </mat-form-field>
+                </div>
+
+                <button [disabled]="equation && !answer"
+                class="mt-2"
+                mat-flat-button
+                (click)="submitAnswer()"
+                [color]="'primary'">
+                    Submit
+                </button>
+
+                <div
+                *ngIf="this.data.component.content.numTypes.includes('MixFraction')"
+                class="text-sm mt-2">if answer is mixed fraction like <span [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(sampleMixFraction)"></span>, please input 1 and 1/2</div>
+
+            </ng-container>
+
+
+            <ng-container *ngIf="status==='completed'">
+
+                
+                <div class="flex text-2xl font-bold mt-4">
+                    <div>Completed: {{corrects}}/{{index}}</div>
+                    <button
+                    class="ml-2"
+                    mat-flat-button
+                    (click)="tryagain()"
+                    [color]="'primary'">
+                    Try again
+                    </button>
+                </div>
+
+                <ng-container *ngFor="let h of historyMathML">
+                <ul>
+                    <li>
+                        <div  class="flex items-center border-t border-gray-300">
+                        <div class="mt-4 text-2xl" [innerHTML]=" this.sanitizer.bypassSecurityTrustHtml(h.expression)"></div> 
+                        <mat-icon *ngIf="h.correct" class="ml-4 py-4 text-green-500">check_circle</mat-icon>
+                        <mat-icon *ngIf="!h.correct" class="ml-4 py-4 text-red-500">cancel</mat-icon>
+                        </div>
+                    </li>
+                </ul>                
+                </ng-container>
+
+            </ng-container>
+
+            
         </div>    
 
         
