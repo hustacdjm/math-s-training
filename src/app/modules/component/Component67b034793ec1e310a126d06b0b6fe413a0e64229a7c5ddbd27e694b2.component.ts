@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatRadioGroup, MatRadioModule} from '@angular/material/radio';
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -28,6 +28,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 implements OnInit
 {
 
+    @ViewChild('answerInput', { static: false }) answerInput!: ElementRef; // Use { static: false 
+
+
     @Input() data:any;
     /**
      * Constructor
@@ -45,7 +48,13 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
         this.total = this.data.component.content.maxProblems;
         console.log("total:");
 
-     }
+     }    
+
+    enterEventHandle() {
+        console.log('Enter key pressed. Answer:', this.answer);
+        this.submitAnswer();
+        // Add your logic here
+    }
 
 
 
@@ -87,8 +96,12 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
            
         this.index=1;
         this.status = "intraining";
-
         this.cdr.detectChanges();
+
+        if(this.answerInput){
+            this.answerInput.nativeElement.focus(); // Focus on the input after the view initializes
+        }        
+        
      }
 
      submitAnswer(){
@@ -181,12 +194,16 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
                 return {expression: num, mathJs: num}; // Random integer within the range
             case 'Decimal':
                 const [decMin, decMax] = decimalRange;
-                num = (Math.random() * (decMax - decMin) + decMin).toFixed(2); // Random decimal within the range
+                let fix =  Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+                num = (Math.random() * (decMax - decMin) + decMin).toFixed( fix ); // Random decimal within the range
                 return {expression: num, mathJs: num};
             case 'Fraction':
                 const [fracMin, fracMax] = fractionRange;
-                const denominator = Math.floor(Math.random() * (fracMax - fracMin + 1)) + fracMin;
-                const numerator = Math.floor(Math.random() * (denominator - fracMin + 1)) + fracMin;                
+                let denominator = Math.floor(Math.random() * (fracMax - fracMin + 1)) + fracMin;
+                let numerator = Math.floor(Math.random() * (denominator - fracMin + 1)) + fracMin;  
+                if(numerator == denominator ){
+                    numerator=numerator-1;
+                }              
                 num = `\\frac{${numerator}}{${denominator}}`;
                 return {expression: num, mathJs: `${numerator} / ${denominator}`};
             case 'MixedFraction':
@@ -237,7 +254,7 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
         const [intMin, intMax] = this.stringToRange(this.data.component.content.integerRange);
 
         // Step 1: Generate a random num2 between 1 and 100
-        const num2 = Math.floor(Math.random() * (intMax / 10)) + 1;
+        const num2 = Math.floor(Math.random() * (intMax / 3 - intMin + 1)) + intMin;
     
         // Step 2: Calculate the maximum multiple of num2 within the range
         const maxMultiple = Math.floor(intMax / num2);
@@ -288,7 +305,7 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
                 mathJs: num2_dec
             };
 
-        }
+        }        
         else{
             
             num1 = this.generateNumber(numType, integerRange, fractionRange, decimalRange);
@@ -314,11 +331,18 @@ export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 i
             }
 
         }
-        
-        console.log(num1);
-        console.log(num2);
 
-      
+        if(optType==='Divide'){
+            //num2 can not be zeor, if zeor, then switch
+            let div_0_answer = math.simplify(num2.mathJs + "* 1").toString()
+            if(div_0_answer==='0'){
+                let temp = {...num1};
+                num1 = {...num2};
+                num2 = temp;
+            }            
+        }        
+        console.log(num1);
+        console.log(num2);      
 
         let operator;
         switch (optType) {

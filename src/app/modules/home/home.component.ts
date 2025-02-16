@@ -47,13 +47,13 @@ reactiveComponent = {
     "content": {
       "title": "3rd Grade Training",
       "description": "<p><span style=\"color: rgb(64, 64, 64);\">The&nbsp;</span><strong style=\"color: rgb(64, 64, 64);\">3rd Math Training Objective</strong><span style=\"color: rgb(64, 64, 64);\">&nbsp;often focuses on&nbsp;</span><strong style=\"color: rgb(64, 64, 64);\">developing problem-solving skills and applying mathematical concepts to real-world situations</strong><span style=\"color: rgb(64, 64, 64);\">. This objective builds on foundational knowledge (e.g., arithmetic, algebra, geometry) and emphasizes critical thinking, logical reasoning, and the ability to use math in practical contexts.</span></p>",
-      "numTypes": "Integer,Decimal",
-      "opTypes": "Divide",
+      "numTypes": "Decimal",
+      "opTypes": "Add",
       "opNumSame": true,
       "maxProblems": 4,
-      "integerRange": "1000,10000",
+      "integerRange": "1,100",
       "fractionNumberRange": "1,20",
-      "decimalRange": "10,20",
+      "decimalRange": "1,20",
       "negativeEnable": false
     },
     "ui": {},

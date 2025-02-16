@@ -28,11 +28,13 @@
                         [subscriptSizing]="'dynamic'">
                         <mat-label>Answer:</mat-label>                       
                         <input
-                            matInput
-                            [(ngModel)]="answer"
-                            [ngModelOptions]="{standalone: true}"                            
-                            [placeholder]=""
-                            [spellcheck]="false">
+                        matInput
+                        [(ngModel)]="answer"
+                        [ngModelOptions]="{standalone: true}"
+                        [placeholder]=""
+                        [spellcheck]="false"
+                        (keydown.enter)="enterEventHandle()"
+                        #answerInput> <!-- Template reference variable -->
                     </mat-form-field>
                 </div>
 
