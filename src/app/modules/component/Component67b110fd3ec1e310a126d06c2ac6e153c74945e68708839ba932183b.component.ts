@@ -16,16 +16,16 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
-    selector     : 'Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2',
+    selector     : 'Component67b110fd3ec1e310a126d06c2ac6e153c74945e68708839ba932183b',
     standalone   : true,
-    templateUrl  : './Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2.component.html',
+    templateUrl  : './Component67b110fd3ec1e310a126d06c2ac6e153c74945e68708839ba932183b.component.html',
     encapsulation: ViewEncapsulation.None,
     imports:[
        CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule,MatRadioModule, MatButtonModule
     ]
     
 })
-export class Component67b034793ec1e310a126d06b0b6fe413a0e64229a7c5ddbd27e694b2 implements OnInit
+export class Component67b110fd3ec1e310a126d06c2ac6e153c74945e68708839ba932183b implements OnInit
 {
 
     @ViewChild('answerInput', { static: false }) answerInput!: ElementRef; // Use { static: false 
