@@ -37,7 +37,7 @@ export class LandingHomeComponent implements AfterContentInit
     template={
   "name" : null,
   "description" : null,
-  "version" : "6.0"
+  "version" : "6.1"
 };
   
 reactiveComponent = {
@@ -79,8 +79,8 @@ reactiveComponent = {
    
     async StartTest(){
       
-        const componentModule = await import('../component/Component67b8aeb23884721b26a55bd3f5ead5060bea467282e8c63915642e66.component');
-        const TemplateComponent = componentModule['Component67b8aeb23884721b26a55bd3f5ead5060bea467282e8c63915642e66'];
+        const componentModule = await import('../component/Component67b8e1f23884721b26a55bd41cebfd4425f0439597b3c8780e882a45.component');
+        const TemplateComponent = componentModule['Component67b8e1f23884721b26a55bd41cebfd4425f0439597b3c8780e882a45'];
 
         this.testContainer.clear();
 
